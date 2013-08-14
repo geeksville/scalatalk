@@ -17,7 +17,8 @@ class MyScalatraServlet extends LittleLabAppStack {
   }
   
   get("/reader") {
-    val baseurl = params.getOrElse("url", "http://hawaii.reddit.com")
+	val baseurl = params("url")
+    //val baseurl = params.getOrElse("url", "http://hawaii.reddit.com")
 	// Rss feeds seem to be in .rss, so add that to the url
     val url = new URL(baseurl + "/.rss")
     val xml = XML.load(url)
